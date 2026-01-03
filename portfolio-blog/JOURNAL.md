@@ -1,4 +1,4 @@
-# Car Cost Tracker — Development Journal
+# Portfolio + Blog — Development Journal
 
 ## How to use this file
 
