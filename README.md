@@ -30,21 +30,21 @@ This year, I'm breaking the cycle. Not by forcing myself to never experiment —
 
 **Tier 1 Projects** — Must ship:
 
-| Project          | Description                                  | Target      |
-| ---------------- | -------------------------------------------- | ----------- |
-| Trading Journal  | Personal trading log with analytics          | ~2-3 months |
-| Car Cost Tracker | Vehicle maintenance & repair expense tracker | ~2-3 months |
-| TBD              | Third project to be defined                  | ~2-3 months |
+| Project            | Description                                 | Target      |
+| ------------------ | ------------------------------------------- | ----------- |
+| Trading Journal    | Personal trading log with P&L and dividends | ~2-3 months |
+| Car Cost Tracker   | Vehicle maintenance & expense tracker       | ~2-3 months |
+| ForkliftFleetCheck | Fleet inspection app with multi-role access | ~2-3 months |
 
 ### Semester 2 (July → December)
 
 **Tier 1 Projects** — Must ship:
 
-| Project          | Description                           | Target      |
-| ---------------- | ------------------------------------- | ----------- |
-| Portfolio + Blog | Showcase projects, document learnings | ~2-3 months |
-| TBD              | To be defined from "bone pile"        | ~2-3 months |
-| TBD              | To be defined from "bone pile"        | ~2-3 months |
+| Project          | Description                              | Target      |
+| ---------------- | ---------------------------------------- | ----------- |
+| Portfolio + Blog | Showcase projects, document learnings    | ~2-3 months |
+| GuardStore       | E-commerce for learning RBAC/permissions | ~2-3 months |
+| TBD              | To be defined from "bone pile"           | ~2-3 months |
 
 ### The "Bone Pile"
 
@@ -82,19 +82,26 @@ challenges. I write the code. This keeps my skills sharp and my understanding de
 
 ```text
 2026-road-to-six/
-├── README.md                 # You are here
-├── PROJECTS.md               # Overview of all projects
-├── projects/
-│   ├── trading-journal/
-│   │   ├── MVP.md            # What "done" looks like
-│   │   └── JOURNAL.md        # Progress log, learnings, time spent
-│   ├── car-cost-tracker/
-│   │   ├── MVP.md
-│   │   └── JOURNAL.md
-│   └── .../
+├── README.md                   # You are here
+├── PROJECTS.md                 # Overview of all projects
+├── trading-journal/
+│   ├── MVP.md                  # What "done" looks like
+│   └── JOURNAL.md              # Progress log, learnings, time spent
+├── car-cost-tracker/
+│   ├── MVP.md
+│   └── JOURNAL.md
+├── forklift-fleet-check/
+│   ├── MVP.md
+│   └── JOURNAL.md
+├── guard-store/
+│   ├── MVP.md
+│   └── JOURNAL.md
+├── portfolio-blog/
+│   ├── MVP.md
+│   └── JOURNAL.md
 └── claude-project/
-    ├── DESCRIPTION.md        # For Claude Web project setup
-    └── INSTRUCTIONS.md       # How I want Claude to interact with me
+    ├── DESCRIPTION.md          # For Claude Web project setup
+    └── INSTRUCTIONS.md         # How I want Claude to interact with me
 ```
 
 ## Tracking Progress
@@ -111,9 +118,27 @@ I'm moving forward even when it doesn't feel like it.
 
 ## Links
 
-- [Trading Journal repo](https://github.com/TituxMetal/astro-trading-journal)
-- [Car Cost Tracker repo](https://github.com/TituxMetal/car-repair-cost-trac)
-- More to come...
+### Semester 1 Projects
+
+- [Trading Journal MVP](./trading-journal/MVP.md)
+- [Car Cost Tracker MVP](./car-cost-tracker/MVP.md)
+- [ForkliftFleetCheck MVP](./forklift-fleet-check/MVP.md)
+
+### Semester 2 Projects
+
+- [Portfolio + Blog MVP](./portfolio-blog/MVP.md)
+- [GuardStore MVP](./guard-store/MVP.md)
+
+### Prototypes (Spark)
+
+- [Trading Journal prototype](https://github.com/TituxMetal/astro-trading-journal)
+- [Car Cost Tracker prototype](https://github.com/TituxMetal/car-repair-cost-trac)
+- [FleetChariot prototype](https://github.com/TituxMetal/fleetchariot)
+
+### Base Template
+
+- [sample-project](https://github.com/TituxMetal/sample-project) — Starting point for all new
+  projects
 
 ---
 
