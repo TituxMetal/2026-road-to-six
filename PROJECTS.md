@@ -44,7 +44,7 @@ This year, I'm breaking the cycle. Not by forcing myself to never experiment —
 | ---------------- | ---------------------------------------- | ----------- |
 | Portfolio + Blog | Showcase projects, document learnings    | ~2-3 months |
 | GuardStore       | E-commerce for learning RBAC/permissions | ~2-3 months |
-| TBD              | To be defined from "bone pile"           | ~2-3 months |
+| CubeMaster       | Rubik's Cube solver, coach & timer app   | ~2-3 months |
 
 ### The "Bone Pile"
 
@@ -99,6 +99,9 @@ challenges. I write the code. This keeps my skills sharp and my understanding de
 ├── portfolio-blog/
 │   ├── MVP.md
 │   └── JOURNAL.md
+├── cube-master/
+│   ├── MVP.md
+│   └── JOURNAL.md
 └── claude-project/
     ├── DESCRIPTION.md          # For Claude Web project setup
     └── INSTRUCTIONS.md         # How I want Claude to interact with me
@@ -128,12 +131,14 @@ I'm moving forward even when it doesn't feel like it.
 
 - [Portfolio + Blog MVP](./portfolio-blog/MVP.md)
 - [GuardStore MVP](./guard-store/MVP.md)
+- [CubeMaster MVP](./cube-master/MVP.md)
 
 ### Prototypes (Spark)
 
 - [Trading Journal prototype](https://github.com/TituxMetal/astro-trading-journal)
 - [Car Cost Tracker prototype](https://github.com/TituxMetal/car-repair-cost-trac)
 - [FleetChariot prototype](https://github.com/TituxMetal/fleetchariot)
+- [CubeMaster prototype](https://github.com/TituxMetal/rubiks-cube-solver-codespace)
 
 ### Base Template
 
