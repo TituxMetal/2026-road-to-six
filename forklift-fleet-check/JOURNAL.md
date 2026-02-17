@@ -14,23 +14,36 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 ---
 
+## Cumulative Stats
+
+| Metric        | Total          |
+| ------------- | -------------- |
+| Commits       | 1              |
+| PRs merged    | 0              |
+| Issues closed | 0              |
+| Weeks active  | 1              |
+| Period        | Jan 5-11, 2026 |
+
+---
+
 ## Entries
 
-### 2026-01-XX
+### Week of Jan 5-11, 2026
 
-**Time spent:** X hours
+> **forklift-fleet-check** 1 commit
 
 **Worked on:**
 
-- TODO
+- Repo created on Jan 5, initial project setup committed on Jan 7
+- Born from wanting a simpler logistics-themed project for Road to Six — distinct from warehouse-manager which comes from day-job frustration with enterprise WMS systems. ForkliftFleetCheck is about fleet inspection with multi-role access, a more focused and shippable scope.
 
 **Learned:**
 
-- TODO
+- Scoping a project smaller than what you're used to (warehouse-manager is ambitious) makes it more likely to actually ship
 
 **Blockers:**
 
-- None
+- None — but no further development yet, focus shifted to car-cost-tracker
 
 ---
 
