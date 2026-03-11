@@ -56,17 +56,9 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ ${#REPOS[@]} -eq 0 ]]; then
-  REPOS=("${DEFAULT_REPOS[@]}")
-fi
-
-if [[ -z "$FROM_DATE" ]]; then
-  FROM_DATE=$(date -d "7 days ago" +%Y-%m-%d 2>/dev/null || date -v-7d +%Y-%m-%d)
-fi
-
-if [[ -z "$TO_DATE" ]]; then
-  TO_DATE=$(date +%Y-%m-%d)
-fi
+[[ ${#REPOS[@]} -eq 0 ]] && REPOS=("${DEFAULT_REPOS[@]}")
+[[ -z "$FROM_DATE" ]] && FROM_DATE=$(date -d "7 days ago" +%Y-%m-%d 2>/dev/null || date -v-7d +%Y-%m-%d)
+[[ -z "$TO_DATE" ]] && TO_DATE=$(date +%Y-%m-%d)
 
 FROM_ISO="${FROM_DATE}T00:00:00Z"
 TO_ISO="${TO_DATE}T23:59:59Z"
@@ -75,17 +67,34 @@ TO_ISO="${TO_DATE}T23:59:59Z"
 # author date in jq instead.
 UNTIL_BUFFER_ISO=$(date -d "${TO_DATE} + 7 days" +%Y-%m-%d 2>/dev/null || date -v+7d -j -f "%Y-%m-%d" "$TO_DATE" +%Y-%m-%d)T23:59:59Z
 
-# --- Check gh is available ---
+# --- Guard: gh must be available and authenticated ---
 
-if ! command -v gh &>/dev/null; then
-  echo "Error: gh CLI not found. Install it from https://cli.github.com/"
-  exit 1
-fi
+command -v gh &>/dev/null || { echo "Error: gh CLI not found. Install it from https://cli.github.com/"; exit 1; }
+gh auth status &>/dev/null || { echo "Error: gh is not authenticated. Run 'gh auth login' first."; exit 1; }
 
-if ! gh auth status &>/dev/null; then
-  echo "Error: gh is not authenticated. Run 'gh auth login' first."
-  exit 1
-fi
+# --- Helper: detect active branch ---
+# Some repos use 'develop' as the active branch (PRs merge there, not main).
+# Returns "&sha=develop" when develop exists, empty string otherwise.
+
+buildBranchParam() {
+  local branch
+  branch=$(gh api "/repos/$1/branches/develop" --jq '.name' 2>/dev/null || echo "")
+  [[ "$branch" != "develop" ]] && return
+  echo "&sha=develop"
+}
+
+# --- Helper: join array elements with a separator ---
+
+joinWith() {
+  local sep="$1"
+  shift
+  local result="$1"
+  shift
+  for item in "$@"; do
+    result="${result}${sep}${item}"
+  done
+  echo "$result"
+}
 
 # --- Collect stats ---
 
@@ -102,9 +111,10 @@ REPO_SUMMARIES=()
 
 for REPO in "${REPOS[@]}"; do
   FULL_REPO="${GITHUB_USER}/${REPO}"
+  BRANCH_PARAM=$(buildBranchParam "$FULL_REPO")
 
   # Commits count — filter by author date in jq to handle squash-merge date mismatch
-  COMMITS=$(gh api "/repos/${FULL_REPO}/commits?since=${FROM_ISO}&until=${UNTIL_BUFFER_ISO}&per_page=100" \
+  COMMITS=$(gh api "/repos/${FULL_REPO}/commits?since=${FROM_ISO}&until=${UNTIL_BUFFER_ISO}&per_page=100${BRANCH_PARAM}" \
     --jq "[.[] | select(.commit.author.date >= \"${FROM_ISO}\" and .commit.author.date <= \"${TO_ISO}\")] | length" 2>/dev/null || echo "0")
 
   # PRs merged in period
@@ -116,12 +126,10 @@ for REPO in "${REPOS[@]}"; do
     --jq "[.[] | select(.closed_at >= \"${FROM_ISO}\" and .closed_at <= \"${TO_ISO}\" and (.pull_request == null))] | length" 2>/dev/null || echo "0")
 
   # Skip repos with zero activity
-  if [[ "$COMMITS" -eq 0 && "$PRS_MERGED" -eq 0 && "$ISSUES_CLOSED" -eq 0 ]]; then
-    continue
-  fi
+  [[ "$COMMITS" -eq 0 && "$PRS_MERGED" -eq 0 && "$ISSUES_CLOSED" -eq 0 ]] && continue
 
   # Top commit messages (by author date)
-  TOP_COMMITS=$(gh api "/repos/${FULL_REPO}/commits?since=${FROM_ISO}&until=${UNTIL_BUFFER_ISO}&per_page=100" \
+  TOP_COMMITS=$(gh api "/repos/${FULL_REPO}/commits?since=${FROM_ISO}&until=${UNTIL_BUFFER_ISO}&per_page=100${BRANCH_PARAM}" \
     --jq "[.[] | select(.commit.author.date >= \"${FROM_ISO}\" and .commit.author.date <= \"${TO_ISO}\")] | .[0:5] | .[].commit.message | split(\"\n\")[0]" 2>/dev/null || echo "")
 
   TOTAL_COMMITS=$((TOTAL_COMMITS + COMMITS))
@@ -130,13 +138,12 @@ for REPO in "${REPOS[@]}"; do
 
   # Print repo section
   echo "--- ${REPO} ---"
+  [[ -n "$BRANCH_PARAM" ]] && echo "  (branch: develop)"
   echo "  Commits: ${COMMITS} | PRs merged: ${PRS_MERGED} | Issues closed: ${ISSUES_CLOSED}"
-  if [[ -n "$TOP_COMMITS" ]]; then
+  [[ -n "$TOP_COMMITS" ]] && {
     echo "  Recent commits:"
-    echo "$TOP_COMMITS" | while IFS= read -r msg; do
-      echo "    - ${msg}"
-    done
-  fi
+    echo "$TOP_COMMITS" | while IFS= read -r msg; do echo "    - ${msg}"; done
+  }
   echo ""
 
   # Build summary for stats banner
@@ -153,7 +160,6 @@ echo " JOURNAL ENTRY SKELETON"
 echo "========================================"
 echo ""
 
-# Format week range for header
 FROM_DISPLAY=$(date -d "$FROM_DATE" "+%b %-d" 2>/dev/null || date -j -f "%Y-%m-%d" "$FROM_DATE" "+%b %-d")
 TO_DISPLAY=$(date -d "$TO_DATE" "+%b %-d, %Y" 2>/dev/null || date -j -f "%Y-%m-%d" "$TO_DATE" "+%b %-d, %Y")
 
@@ -166,15 +172,10 @@ BANNER_PARTS=()
 [[ $TOTAL_PRS -gt 0 ]] && BANNER_PARTS+=("${TOTAL_PRS} PRs merged")
 [[ $TOTAL_ISSUES -gt 0 ]] && BANNER_PARTS+=("${TOTAL_ISSUES} issues closed")
 
-if [[ ${#BANNER_PARTS[@]} -gt 0 ]]; then
-  BANNER=""
-  for i in "${!BANNER_PARTS[@]}"; do
-    [[ $i -gt 0 ]] && BANNER="${BANNER} | "
-    BANNER="${BANNER}${BANNER_PARTS[$i]}"
-  done
-  echo "> ${BANNER}"
+[[ ${#BANNER_PARTS[@]} -gt 0 ]] && {
+  echo "> $(joinWith " | " "${BANNER_PARTS[@]}")"
   echo ""
-fi
+}
 
 echo "**Worked on:**"
 echo ""
@@ -192,12 +193,7 @@ echo "---"
 
 # --- Per-repo breakdown ---
 
-if [[ ${#REPO_SUMMARIES[@]} -gt 1 ]]; then
+[[ ${#REPO_SUMMARIES[@]} -gt 1 ]] && {
   echo ""
-  BREAKDOWN=""
-  for i in "${!REPO_SUMMARIES[@]}"; do
-    [[ $i -gt 0 ]] && BREAKDOWN="${BREAKDOWN} | "
-    BREAKDOWN="${BREAKDOWN}${REPO_SUMMARIES[$i]}"
-  done
-  echo "(Per-repo: ${BREAKDOWN})"
-fi
+  echo "(Per-repo: $(joinWith " | " "${REPO_SUMMARIES[@]}"))"
+}
