@@ -14,15 +14,77 @@ that structure the "Learn By Doing" workflow.
 
 | Metric        | Total                 |
 | ------------- | --------------------- |
-| Commits       | 31                    |
-| PRs merged    | 14                    |
-| Issues closed | 0                     |
-| Weeks active  | 3                     |
-| Period        | Jan 25 — Feb 15, 2026 |
+| Commits       | 46                    |
+| PRs merged    | 19                    |
+| Issues closed | 1                     |
+| Weeks active  | 6                     |
+| Period        | Jan 25 — Mar 11, 2026 |
 
 ---
 
 ## Entries
+
+### Week of Mar 10-11, 2026 (partial)
+
+> 2 commits | 1 PR merged
+
+**Worked on:**
+
+- **PR #37:** coaching-review agent strengthened with correctness and coherence checks — catches logic errors, not just style
+- Ship-scanner gained 4 new convention checks (CS-7 through CS-10) based on real-world patterns encountered during car-cost-tracker development
+
+**Learned:**
+
+- Agent rules need to evolve from real usage — the new scanner checks came directly from patterns that slipped through in actual PRs
+- Correctness checks (does the code do what it says?) are more valuable than style checks in code review
+
+**Blockers:**
+
+- None
+
+---
+
+### Week of Mar 3-9, 2026
+
+> 5 commits | 2 PRs merged
+
+**Worked on:**
+
+- **PR #34:** Feature-shape template enhanced with UI Reference section and Design System guidance — born from the car-cost-tracker DaisyUI migration experience
+- **PR #36:** `/coach` command removed entirely, `/start` made the single entry point for all sessions. Simplified the command surface: fewer commands = less confusion for the AI
+- References and install counts updated after /coach removal
+
+**Learned:**
+
+- Having too many entry-point commands (`/start`, `/coach`, `/coaching`) confused the AI about which to use — consolidating into one eliminates that ambiguity
+- Adding a UI Reference section to feature shapes forces design decisions to happen during planning, not during implementation
+
+**Blockers:**
+
+- None
+
+---
+
+### Week of Feb 24 - Mar 2, 2026
+
+> 7 commits | 2 PRs merged | 1 issue closed
+
+**Worked on:**
+
+- **PR #32:** Autonomous coaching pipeline — `/coach` command with context and auditor sub-agents for self-audit
+- **PR #33:** `/ship` post-implementation shipping pipeline with 4 sub-agents: ship-scanner (convention violations), ship-planner (atomic commit sequence), ship-verifier (test/typecheck/lint/format), ship-progress (PROGRESS.md updates)
+- Ship pipeline fixes: commit planning and progress update issues resolved
+
+**Learned:**
+
+- Breaking the shipping process into 4 specialized agents (scan -> plan -> verify -> progress) mirrors a real CI/CD pipeline but with human-in-the-loop approval
+- The coaching pipeline's self-audit step catches issues before the human sees them — reduces review friction
+
+**Blockers:**
+
+- None
+
+---
 
 ### Week of Feb 9-15, 2026
 
