@@ -16,17 +16,123 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 ## Cumulative Stats
 
-| Metric        | Total                |
-| ------------- | -------------------- |
-| Commits       | 70                   |
-| PRs merged    | 8                    |
-| Issues closed | 6                    |
-| Weeks active  | 6                    |
-| Period        | Jan 5 — Feb 15, 2026 |
+| Metric        | Total                 |
+| ------------- | --------------------- |
+| Commits       | 160                   |
+| PRs merged    | 24                    |
+| Issues closed | 6                     |
+| Weeks active  | 10                    |
+| Period        | Jan 5 — Mar 11, 2026  |
 
 ---
 
 ## Entries
+
+### Week of Mar 10-11, 2026 (partial)
+
+> 8 commits | 1 PR merged
+
+**Worked on:**
+
+- **Final design system migration block (PR #35):** migrated profile, admin, and vehicle features to DaisyUI semantic colors and card layouts
+- Auth pages and misc components migrated to semantic color tokens
+- ConfirmDialog overlay migrated to semantic color
+- Removed `react-icons` and `astro-icon` dependencies entirely — replaced by local Astro icon components and Lucide icons
+
+**Learned:**
+
+- Cleaning up unused icon libraries at the end of a migration reduces bundle size and eliminates phantom dependencies
+- Semantic color tokens (DaisyUI) mean you never hardcode colors — theme changes propagate everywhere automatically
+
+**Blockers:**
+
+- None
+
+---
+
+### Week of Mar 3-9, 2026
+
+> 40 commits | 7 PRs merged
+
+**Worked on:**
+
+- **Check-types feature completed:** suggested check types with pill-button design, feature barrel export, container integration (PR #28)
+- **Design system migration kicked off — 6 PRs in one week:**
+  - PR #29: Foundation — DaisyUI + Radix UI + Lucide installed, custom dark theme configured, base styles simplified
+  - PR #30: Shared UI components migrated — Button (btn classes), Input, Label, Textarea, Select (DaisyUI form classes), FormWrapper (DaisyUI alert), ConfirmDialog (Radix UI Dialog)
+  - PR #31: Layouts migrated — Main.astro (DaisyUI navbar with responsive menu), AdminLayout (DaisyUI menu)
+  - PR #32: Auth components migrated to DaisyUI semantic classes, ARIA live-region roles added
+  - PR #33: Vehicle feature migrated — VehicleForm with fieldset grouping and responsive grid, VehicleContainer and VehicleProfile with semantic classes
+  - PR #34: Check-types feature migrated — CheckTypeCard, CheckTypeList, CheckTypeContainer with empty state, SuggestedCheckTypes pill-button design
+- Label component enhanced with error prop and aria-hidden required indicator
+- Input, Textarea, Select now integrate Label with fullWidth default
+- fade-in-up animation utility added
+- astro-icon integration removed, replaced by local Astro icon components
+
+**Learned:**
+
+- DaisyUI's semantic class system (`btn-primary`, `input-bordered`, `card`) eliminates the need for custom Tailwind utility soup — much more readable
+- Radix UI Dialog handles focus trapping, scroll locking, and accessibility out of the box — no more custom ConfirmDialog logic
+- Migrating a design system systematically (foundation -> shared UI -> layouts -> features) prevents cascading breakage
+- Integrating Label directly into Input/Textarea/Select reduces boilerplate in every form
+
+**Blockers:**
+
+- None
+
+---
+
+### Week of Feb 24 - Mar 2, 2026
+
+> 5 commits | 1 PR merged
+
+**Worked on:**
+
+- **Check-types CRUD flows (PR #27):** create, edit, and delete flows wired into CheckTypeContainer
+- DeleteCheckTypeDialog component added
+- CheckTypeList simplified to pure card renderer (single responsibility)
+- Plan phases 13-16 revised and open questions resolved
+
+**Learned:**
+
+- Keeping CheckTypeList as a pure renderer and lifting state management to the Container follows the presentational/container pattern — easier to test each in isolation
+- Revising the plan mid-feature (phases 13-16) based on what you've learned while building is healthy, not a sign of poor planning
+
+**Blockers:**
+
+- None
+
+---
+
+### Week of Feb 17-23, 2026
+
+> 37 commits | 7 PRs merged
+
+**Worked on:**
+
+- **Check-types feature — full backend in 3 days:**
+  - PR #18: Application layer — DTOs, mapper, CRUD use cases, CheckType service facade
+  - PR #19: Infrastructure layer — Prisma repository, infrastructure mapper, REST controller with vehicle ownership verification
+  - Module wiring and app registration
+- **Check-types frontend kickoff:**
+  - PR #22: Frontend setup — type definitions, Zod validation schemas, page, navigation link
+  - PR #24: Data layer — API service, Nanostores state store, useCheckTypes hook (all with tests)
+  - PR #25: UI components — CheckTypeCard, CheckTypeList, CheckTypeContainer with tests, mounted in Astro page
+  - PR #26: CheckTypeForm component, Textarea shared UI component
+- PR #23: Fixed deprecated Zod v4 API usage across all validation schemas
+- Bug fixes in shared UI: Input `w-full` and `aria-invalid` bugs, Select `aria-invalid` bug, missing tests added for Button, Label
+
+**Learned:**
+
+- Building the second feature (check-types) went much faster than vehicles — the patterns from hexagonal architecture were already established
+- Zod v4 deprecated some APIs (`.refine()` signature change) — catching these early prevents runtime surprises
+- Adding tests for shared UI components (Button, Label, Input, Select) retroactively pays off immediately when those components get modified
+
+**Blockers:**
+
+- None
+
+---
 
 ### Week of Feb 9-15, 2026
 
