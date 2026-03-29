@@ -14,15 +14,36 @@ that structure the "Learn By Doing" workflow.
 
 | Metric        | Total                 |
 | ------------- | --------------------- |
-| Commits       | 46                    |
-| PRs merged    | 19                    |
-| Issues closed | 1                     |
-| Weeks active  | 6                     |
+| Commits       | 51                    |
+| PRs merged    | 21                    |
+| Issues closed | 2                     |
+| Weeks active  | 7                     |
 | Period        | Jan 25 — Mar 11, 2026 |
 
 ---
 
 ## Entries
+
+### Week of Mar 11, 2026
+
+> 5 commits | 2 PRs merged | 1 issue closed
+
+**Worked on:**
+
+- **PR #38:** Hooks migrated from settings.json injection to local plugin format — plugin directory at `~/.claude/tool-kit-hooks/` with manifest, wrapped hooks.json, and enabledPlugins registration in settings.json
+- **PR #37:** coaching-review agent strengthened with correctness and coherence checks; ship-scanner gained 4 new convention checks (CS-7 through CS-10): hardcoded temporal values, JSX boolean attribute misuse, hardcoded Tailwind colors, pure black/white usage
+- Documentation updated: CLAUDE.md and README reflect new plugin architecture
+
+**Learned:**
+
+- Claude Code's local plugin format (`plugin.json` manifest + hooks.json) is cleaner than direct settings.json injection — better isolation and easier uninstall
+- Convention checks derived from real-world patterns (found during car-cost-tracker development) catch more actual issues than theoretical rules
+
+**Blockers:**
+
+- None
+
+---
 
 ### Week of Mar 10-11, 2026 (partial)
 
