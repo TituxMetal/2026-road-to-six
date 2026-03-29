@@ -18,15 +18,65 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 | Metric        | Total                 |
 | ------------- | --------------------- |
-| Commits       | 160                   |
-| PRs merged    | 24                    |
+| Commits       | 217                   |
+| PRs merged    | 35                    |
 | Issues closed | 6                     |
-| Weeks active  | 10                    |
-| Period        | Jan 5 — Mar 11, 2026  |
+| Weeks active  | 13                    |
+| Period        | Jan 5 — Mar 29, 2026  |
 
 ---
 
 ## Entries
+
+### Week of Mar 24-29, 2026
+
+> 25 commits | 5 PRs merged
+
+**Worked on:**
+
+- **Check-logging feature — full stack in 4 days (PRs #40-43):**
+  - Block 1: Prisma CheckLog model, domain entity, value objects, repository interface
+  - Block 2: Application DTOs, mapper with status computation (overdue/due-soon/ok/never), use cases with date arithmetic, infrastructure layer, NestJS module
+  - Block 3: Frontend API service, Nanostores store, useCheckLogs hook, leaf components, LogCheckForm/LogCheckDialog, CheckLogList, CheckLogContainer
+  - Block 4: Integration into check-types (status badges, log buttons), check-logs Astro page, layout polish
+- **PR #44:** DialogShell extracted as shared Radix Dialog component — ConfirmDialog and LogCheckDialog both refactored to use it
+- Feature 05 (Dashboard) shape document written, PROGRESS.md updated
+- Auth fix: reverted useSecureCookies — Better Auth prefixes cookies with `__Secure-` when enabled, breaking cross-origin session detection
+
+**Learned:**
+
+- Third feature (check-logging) built even faster than check-types — hexagonal patterns are now muscle memory
+- Status computation logic (overdue/due-soon/ok/never) based on date arithmetic belongs in the application mapper, not the frontend — single source of truth
+- Extracting DialogShell after two dialogs existed (ConfirmDialog, LogCheckDialog) is the right moment — pattern proven, not speculative
+
+**Blockers:**
+
+- None
+
+---
+
+### Week of Mar 11-16, 2026
+
+> 24 commits | 3 PRs merged
+
+**Worked on:**
+
+- **PR #35 (partial — started previous week):** finalized design system migration — profile, admin, vehicle features migrated to DaisyUI cards/tables/badges, auth pages to semantic colors, ConfirmDialog overlay fixed, react-icons and astro-icon removed
+- **PR #37:** Full dependency update across the project, bun bumped 1.3.5 → 1.3.10
+- **PR #38 — Fly.io deployment:** Docker hardening (production flag, prisma in deps), cross-origin auth adaptation, server-side API proxy for same-origin cookie flow, tsc-alias for path resolution in build output, Fly.io config added
+- MVP and PROGRESS docs updated for post-Feature 03 housekeeping
+
+**Learned:**
+
+- Cross-origin auth with Better Auth requires careful cookie handling — server-side API proxy keeps cookies on the same origin
+- `tsc-alias` is needed to resolve TypeScript path aliases (`@/...`) in the compiled output — TSC doesn't do this natively
+- Pinning `better-auth` to an exact version prevents surprise breaking changes from minor updates
+
+**Blockers:**
+
+- None
+
+---
 
 ### Week of Mar 10-11, 2026 (partial)
 
