@@ -18,15 +18,39 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 | Metric        | Total                                                  |
 | ------------- | ------------------------------------------------------ |
-| Commits       | ~20 (across cubemaster + rubiks-cube-solver-codespace) |
-| PRs merged    | 1 (road-to-six meta-repo)                              |
+| Commits       | ~36 (across cubemaster + rubiks-cube-solver-codespace) |
+| PRs merged    | 4                                                      |
 | Issues closed | 0                                                      |
-| Weeks active  | 2                                                      |
-| Period        | Jan 26 — Feb 7, 2026                                   |
+| Weeks active  | 3                                                      |
+| Period        | Jan 26 — Mar 29, 2026                                  |
 
 ---
 
 ## Entries
+
+### Week of Mar 29, 2026
+
+> 16 commits | 3 PRs merged
+
+**Worked on:**
+
+- **Project restructuring:** PRD written, feature shapes added (design system as Feature 01), README rewritten, PROGRESS.md with milestone tracking
+- **Tooling migration:** npm → Bun, Prettier configured
+- **PR #2 — Design system migration:** DaisyUI + Radix Dialog installed, custom "rubiks" dark theme (OKLch colors), cube-specific color tokens (`bg-cube-*`), all cube components migrated to semantic HTML (figure/figcaption, aria-labels, role="img"), app layout with navbar and About dialog via DialogShell
+- Accessibility expanded: semantic HTML, ARIA labels, AAA contrast tracking added to PROGRESS.md
+- Copilot review feedback addressed (button types, dialog props, README format)
+
+**Learned:**
+
+- Applying the same DaisyUI migration pattern from car-cost-tracker to a different project confirms the approach is portable — custom theme + semantic tokens + Radix primitives
+- OKLch color space for theme definition produces more perceptually uniform colors than hex/HSL
+- Cube sticker colors as custom Tailwind tokens (`bg-cube-white`, `bg-cube-red`, etc.) decouple visual representation from theme — cube colors stay fixed while UI theme can change
+
+**Blockers:**
+
+- None
+
+---
 
 ### Week of Feb 3-9, 2026
 
