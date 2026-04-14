@@ -18,15 +18,37 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 | Metric        | Total                 |
 | ------------- | --------------------- |
-| Commits       | 217                   |
-| PRs merged    | 35                    |
+| Commits       | 224                   |
+| PRs merged    | 36                    |
 | Issues closed | 6                     |
-| Weeks active  | 13                    |
-| Period        | Jan 5 — Mar 29, 2026  |
+| Weeks active  | 14                    |
+| Period        | Jan 5 — Apr 12, 2026  |
 
 ---
 
 ## Entries
+
+### Week of Apr 6-12, 2026
+
+> 7 commits | 1 PR merged
+
+**Worked on:**
+
+- **PR #46:** Feature 05 Dashboard — dashboard feature composing existing hooks, centralized act export in test-utils, scoped container spec spies, fixed duplicate fetchStatuses call in logCheck
+- Feature 05 phases marked complete in PROGRESS.md
+- Config cleanup: removed deprecated baseUrl from tsconfigs
+- Feature 06 (Expenses) shape document written, progress tracking updated
+
+**Learned:**
+
+- Dashboard as a composition of existing hooks (not new data fetching) validates the hexagonal approach — the feature is thin UI over already-tested application logic
+- Scoping spies to each test (`beforeEach`) instead of sharing them across the suite prevents flaky test interactions
+
+**Blockers:**
+
+- None
+
+---
 
 ### Week of Mar 24-29, 2026
 
