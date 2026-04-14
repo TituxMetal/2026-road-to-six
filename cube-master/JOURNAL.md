@@ -16,8 +16,8 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 ## Cumulative Stats
 
-| Metric        | Total                                                  |
-| ------------- | ------------------------------------------------------ |
+| Metric        | Total                                                    |
+| ------------- | -------------------------------------------------------- |
 | Commits       | ~105 (across cube-master + rubiks-cube-solver-codespace) |
 | PRs merged    | 13                                                       |
 | Issues closed | 0                                                        |
