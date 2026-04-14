@@ -16,6 +16,7 @@ GITHUB_USER="TituxMetal"
 DEFAULT_REPOS=(
   "car-cost-tracker"
   "claude-code-tool-kit"
+  "cube-master"
   "forklift-fleet-check"
   "rubiks-cube-solver-codespace"
   "sample-project"
