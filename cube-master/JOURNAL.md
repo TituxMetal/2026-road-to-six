@@ -18,11 +18,11 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 | Metric        | Total                                                    |
 | ------------- | -------------------------------------------------------- |
-| Commits       | ~105 (across cube-master + rubiks-cube-solver-codespace) |
+| Commits       | ~116 (101 pushed + ~15 local Spark cubemaster)           |
 | PRs merged    | 13                                                       |
 | Issues closed | 0                                                        |
 | Weeks active  | 5                                                        |
-| Period        | Jan 26 — Apr 14, 2026                                    |
+| Period        | Jan 26 — Apr 7, 2026                                     |
 
 ---
 
@@ -76,9 +76,9 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 ---
 
-### Week of Mar 29, 2026
+### Week of Mar 23-29, 2026
 
-> 16 commits | 3 PRs merged
+> **rubiks-cube-solver-codespace** 16 commits | 3 PRs merged
 
 **Worked on:**
 
@@ -100,14 +100,15 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 ---
 
-### Week of Feb 3-9, 2026
+### Week of Feb 2-8, 2026
 
-> **road-to-six** 1 PR merged
+> **rubiks-cube-solver-codespace** 2 commits — **road-to-six** 1 PR merged
 
 **Worked on:**
 
 - CubeMaster officially added as the 6th project in Road to Six (Semester 2)
 - PR #1 merged on Feb 7 in the road-to-six meta-repo
+- **rubiks-cube-solver-codespace:** 2 commits on Feb 2 (Cube type scaffolding continuation)
 
 **Learned:**
 
@@ -121,7 +122,7 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 ### Week of Jan 26 - Feb 1, 2026
 
-> **cubemaster** ~15 commits | **rubiks-cube-solver-codespace** 5 commits
+> **cubemaster** ~15 local commits (never pushed) — **rubiks-cube-solver-codespace** 11 commits
 
 **Worked on:**
 
