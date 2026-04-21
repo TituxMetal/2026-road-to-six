@@ -18,15 +18,76 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 | Metric        | Total                 |
 | ------------- | --------------------- |
-| Commits       | 224                   |
-| PRs merged    | 36                    |
+| Commits       | 255                   |
+| PRs merged    | 38                    |
 | Issues closed | 6                     |
-| Weeks active  | 14                    |
-| Period        | Jan 5 — Apr 12, 2026  |
+| Weeks active  | 13                    |
+| Period        | Jan 5 — Apr 20, 2026  |
 
 ---
 
 ## Entries
+
+### Week of Apr 20-26, 2026 (partial)
+
+> 16 commits | 1 PR merged
+
+**Worked on:**
+
+- **PR #48 — Feature 06 (Expenses) frontend:** full CRUD UI on `/expenses` over the already-merged backend.
+  - Types + `amount` utils with FR-locale parser (`89,50` / `89.50` / `89` all accepted), category labels and badge colors
+  - Zod schemas with `.transform()` string → cents, RHF 3-generic form value types
+  - API service wrapping `/vehicles/:vehicleId/expenses`
+  - Nanostores store with computed money atoms (`$totalCents`, `$filteredTotalCents`, `$totalsByCategory`) and CRUD actions
+  - `useExpenses` hook binding store to React
+  - Presentational set: `ExpenseCard`, `ExpensesList`, `ExpensesEmptyState`, `ExpenseForm`, `ExpenseFormDialog`, `DeleteExpenseDialog`, `ExpensesHeader`, `ExpensesFilter`
+  - Container wiring with state machine (loading → list), redirect on no-vehicle, success/error feedback
+  - Page shell at `/expenses` + nav link in `Main.astro` (desktop + mobile)
+- Post-merge fixes: category select placeholder typo, empty-string default on create, `today` computation unified on local time, numeric-input rejection in `parseEurosToCents`.
+- Review backlog logged in PROGRESS.md; Feature 06 frontend phases marked complete.
+
+**Learned:**
+
+- React Hook Form's 3-generic pattern — `useForm<CreateExpenseFormValues, unknown, CreateExpenseSchema>` — decouples raw form strings (what `register` sees) from the transformed submit output (cents as number). Cleaner than manual conversion in `onSubmit`.
+- Input typed `<input type="text">` (not `number`) is the only way to let the FR comma through to `parseEurosToCents` — native number inputs reject the locale separator.
+- `description: null` on PATCH explicitly clears the field, `undefined` leaves it unchanged. Sending `''` deliberately on edit fixes a silent "description stuck" bug when users clear the field.
+- Fourth feature (Expenses) shipped backend + frontend in 3 days — hexagonal scaffolding is now automatic; no friction on layer boundaries.
+
+**Blockers:**
+
+- None
+
+---
+
+### Week of Apr 13-19, 2026
+
+> 15 commits | 1 PR merged
+
+**Worked on:**
+
+- **PR #47 — Feature 06 (Expenses) backend:** full hexagonal stack shipped in one day.
+  - Prisma `Expense` model + migration (`ExpenseCategory` enum, indexes, Vehicle relation)
+  - Domain: Value Objects (`ExpenseId`, `OccurredAt`, `Amount` with `fromCents` / `fromEuros`), validation constants, entity with 4 focused `update*()` methods, exceptions, repository port
+  - Application: DTOs (Create / partial Update / Get) + mapper, 5 use cases (Create, Update, Delete, GetById, ListByVehicle), `ExpenseService` facade
+  - Infrastructure: Prisma mapper + repository (`P2025 → ExpenseNotFoundException`)
+  - REST controller under `/vehicles/:vehicleId/expenses` + DI wiring
+  - 116 new tests; 1249 total pass / 0 fail
+- Ownership verification kept at controller level (CheckLog pattern) rather than duplicated in each use case.
+- Post-PR polish: centralized `EXPENSE_VALIDATION` constants, `ListExpenses` use case relies on repository ordering, test coverage for ownership mismatch, editor pins TypeScript to the workspace version.
+- **V1 Cluster visual refresh handoff archived** (docs/polish).
+
+**Learned:**
+
+- Amounts stored as integer cents end-to-end avoids float drift — `Math.round(euros * 100)` is non-negotiable (`2.995 €` → `300` cents, not `299`).
+- `EXPENSE_VALIDATION.CATEGORIES` was removed because it created a circular import between `entities/` and `validation/`; inline `Object.values(ExpenseCategory)` does the job without breaking layer boundaries.
+- Ownership checks belong at the controller, not inside each use case — plan wording was "in every use case", but reusing the CheckLog trade-off kept the application layer free of HTTP concerns.
+- Partial update orchestration — only apply `update*()` methods for fields `!== undefined`; `null` clears, `undefined` leaves unchanged — matches Prisma semantics and avoids silent data loss.
+
+**Blockers:**
+
+- None
+
+---
 
 ### Week of Apr 6-12, 2026
 
@@ -50,18 +111,19 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 ---
 
-### Week of Mar 24-29, 2026
+### Week of Mar 23-29, 2026
 
-> 25 commits | 5 PRs merged
+> 33 commits | 6 PRs merged
 
 **Worked on:**
 
 - **Check-logging feature — full stack in 4 days (PRs #40-43):**
-  - Block 1: Prisma CheckLog model, domain entity, value objects, repository interface
-  - Block 2: Application DTOs, mapper with status computation (overdue/due-soon/ok/never), use cases with date arithmetic, infrastructure layer, NestJS module
-  - Block 3: Frontend API service, Nanostores store, useCheckLogs hook, leaf components, LogCheckForm/LogCheckDialog, CheckLogList, CheckLogContainer
-  - Block 4: Integration into check-types (status badges, log buttons), check-logs Astro page, layout polish
-- **PR #44:** DialogShell extracted as shared Radix Dialog component — ConfirmDialog and LogCheckDialog both refactored to use it
+  - **PR #40 (Mar 25) — Block 1:** Prisma CheckLog model, domain entity, value objects, repository interface
+  - **PR #41 (Mar 27) — Block 2:** Application DTOs, mapper with status computation (overdue/due-soon/ok/never), use cases with date arithmetic, infrastructure layer, NestJS module
+  - **PR #42 (Mar 28) — Block 3:** Frontend API service, Nanostores store, useCheckLogs hook, leaf components, LogCheckForm/LogCheckDialog, CheckLogList, CheckLogContainer
+  - **PR #43 (Mar 28) — Block 4:** Integration into check-types (status badges, log buttons), check-logs Astro page, layout polish
+- **PR #44 (Mar 28):** DialogShell extracted as shared Radix Dialog component — ConfirmDialog and LogCheckDialog both refactored to use it
+- **PR #45 (Mar 28 → main):** Release of check-logging feature + dashboard planning docs
 - Feature 05 (Dashboard) shape document written, PROGRESS.md updated
 - Auth fix: reverted useSecureCookies — Better Auth prefixes cookies with `__Secure-` when enabled, breaking cross-origin session detection
 
@@ -77,22 +139,26 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 ---
 
-### Week of Mar 11-16, 2026
+### Week of Mar 9-15, 2026
 
-> 24 commits | 3 PRs merged
+> 24 commits | 5 PRs merged
 
 **Worked on:**
 
-- **PR #35 (partial — started previous week):** finalized design system migration — profile, admin, vehicle features migrated to DaisyUI cards/tables/badges, auth pages to semantic colors, ConfirmDialog overlay fixed, react-icons and astro-icon removed
-- **PR #37:** Full dependency update across the project, bun bumped 1.3.5 → 1.3.10
-- **PR #38 — Fly.io deployment:** Docker hardening (production flag, prisma in deps), cross-origin auth adaptation, server-side API proxy for same-origin cookie flow, tsc-alias for path resolution in build output, Fly.io config added
-- MVP and PROGRESS docs updated for post-Feature 03 housekeeping
+- **PR #35 (Mar 11) — Final design system migration block:** profile, admin, and vehicle features migrated to DaisyUI semantic colors and card layouts; auth pages and misc components migrated to semantic color tokens; ConfirmDialog overlay migrated; `react-icons` and `astro-icon` dependencies removed entirely, replaced by local Astro icon components and Lucide icons.
+- **PR #36 (Mar 12 → main):** Release — Features 02 (Check Types) + 03 (UI Design System).
+- **PR #37 (Mar 12):** Full dependency update across the project, Bun bumped 1.3.5 → 1.3.10.
+- **PR #38 (Mar 14) — Fly.io deployment:** Docker hardening (production flag, Prisma in deps), cross-origin auth adaptation, server-side API proxy for same-origin cookie flow, `tsc-alias` for path resolution in build output, Fly.io config added.
+- **PR #39 (Mar 14 → main):** Release — Blocks 2-4 (Docker fixes, dependency updates, Fly.io deployment).
+- MVP and PROGRESS docs updated for post-Feature 03 housekeeping.
 
 **Learned:**
 
-- Cross-origin auth with Better Auth requires careful cookie handling — server-side API proxy keeps cookies on the same origin
-- `tsc-alias` is needed to resolve TypeScript path aliases (`@/...`) in the compiled output — TSC doesn't do this natively
-- Pinning `better-auth` to an exact version prevents surprise breaking changes from minor updates
+- Cross-origin auth with Better Auth requires careful cookie handling — server-side API proxy keeps cookies on the same origin.
+- `tsc-alias` is needed to resolve TypeScript path aliases (`@/...`) in compiled output — TSC doesn't do this natively.
+- Pinning `better-auth` to an exact version prevents surprise breaking changes from minor updates.
+- Cleaning up unused icon libraries at the end of a migration reduces bundle size and eliminates phantom dependencies.
+- Semantic color tokens (DaisyUI) mean you never hardcode colors — theme changes propagate everywhere automatically.
 
 **Blockers:**
 
@@ -100,29 +166,7 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 ---
 
-### Week of Mar 10-11, 2026 (partial)
-
-> 8 commits | 1 PR merged
-
-**Worked on:**
-
-- **Final design system migration block (PR #35):** migrated profile, admin, and vehicle features to DaisyUI semantic colors and card layouts
-- Auth pages and misc components migrated to semantic color tokens
-- ConfirmDialog overlay migrated to semantic color
-- Removed `react-icons` and `astro-icon` dependencies entirely — replaced by local Astro icon components and Lucide icons
-
-**Learned:**
-
-- Cleaning up unused icon libraries at the end of a migration reduces bundle size and eliminates phantom dependencies
-- Semantic color tokens (DaisyUI) mean you never hardcode colors — theme changes propagate everywhere automatically
-
-**Blockers:**
-
-- None
-
----
-
-### Week of Mar 3-9, 2026
+### Week of Mar 2-8, 2026
 
 > 40 commits | 7 PRs merged
 
@@ -154,21 +198,21 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 ---
 
-### Week of Feb 24 - Mar 2, 2026
+### Week of Feb 23 - Mar 1, 2026
 
-> 5 commits | 1 PR merged
+> 19 commits | 3 PRs merged
 
 **Worked on:**
 
-- **Check-types CRUD flows (PR #27):** create, edit, and delete flows wired into CheckTypeContainer
-- DeleteCheckTypeDialog component added
-- CheckTypeList simplified to pure card renderer (single responsibility)
-- Plan phases 13-16 revised and open questions resolved
+- **PR #25 (Feb 23):** Check-types container, list, and card components — presentational/container split with CheckTypeContainer state management.
+- **PR #26 (Feb 23):** CheckTypeForm component + shared Textarea UI component, plus fixes to shared UI component bugs.
+- **PR #27 (Feb 28) — Check-types CRUD flows:** create, edit, and delete flows wired into CheckTypeContainer; DeleteCheckTypeDialog component added; CheckTypeList simplified to pure card renderer (single responsibility).
+- Plan phases 13-16 revised and open questions resolved.
 
 **Learned:**
 
-- Keeping CheckTypeList as a pure renderer and lifting state management to the Container follows the presentational/container pattern — easier to test each in isolation
-- Revising the plan mid-feature (phases 13-16) based on what you've learned while building is healthy, not a sign of poor planning
+- Keeping CheckTypeList as a pure renderer and lifting state management to the Container follows the presentational/container pattern — easier to test each in isolation.
+- Revising the plan mid-feature (phases 13-16) based on what you've learned while building is healthy, not a sign of poor planning.
 
 **Blockers:**
 
@@ -176,29 +220,30 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 ---
 
-### Week of Feb 17-23, 2026
+### Week of Feb 16-22, 2026
 
-> 37 commits | 7 PRs merged
+> 31 commits | 7 PRs merged | 6 issues closed
 
 **Worked on:**
 
-- **Check-types feature — full backend in 3 days:**
-  - PR #18: Application layer — DTOs, mapper, CRUD use cases, CheckType service facade
-  - PR #19: Infrastructure layer — Prisma repository, infrastructure mapper, REST controller with vehicle ownership verification
-  - Module wiring and app registration
-- **Check-types frontend kickoff:**
-  - PR #22: Frontend setup — type definitions, Zod validation schemas, page, navigation link
-  - PR #24: Data layer — API service, Nanostores state store, useCheckTypes hook (all with tests)
-  - PR #25: UI components — CheckTypeCard, CheckTypeList, CheckTypeContainer with tests, mounted in Astro page
-  - PR #26: CheckTypeForm component, Textarea shared UI component
-- PR #23: Fixed deprecated Zod v4 API usage across all validation schemas
-- Bug fixes in shared UI: Input `w-full` and `aria-invalid` bugs, Select `aria-invalid` bug, missing tests added for Button, Label
+- **Check-types feature kickoff (domain → infrastructure → frontend scaffolding):**
+  - **PR #17 (Feb 16):** Domain layer — entity, value objects, repository interface, exceptions.
+  - **PR #18 (Feb 17):** Application layer — DTOs, mapper, CRUD use cases, CheckType service facade.
+  - **PR #19 (Feb 19):** Infrastructure layer — Prisma repository, infrastructure mapper, REST controller with vehicle ownership verification; module wiring and app registration.
+- **Check-types frontend scaffolding:**
+  - **PR #22 (Feb 19):** Frontend setup — type definitions, Zod validation schemas, `/check-types` page, navigation link.
+  - **PR #23 (Feb 19):** Fixed deprecated Zod v4 API usage across all validation schemas.
+  - **PR #24 (Feb 22):** Data layer — API service, Nanostores state store, `useCheckTypes` hook (all with tests).
+- **PR #12 (Feb 16 → main):** Release — Vehicle Profile feature + auth fixes.
+- **6 issues (#6, #7, #8, #9, #10, #11) opened and closed in one go on Feb 16** — memory leak in apiRequest, cross-feature import in ChangePasswordForm, hardcoded year 2030, duplicated handleApiResponse helper, console.log replacement with Logger service, missing useEffect dependency in VehicleContainer.
+- Bug fixes in shared UI: Input `w-full` and `aria-invalid` bugs, Select `aria-invalid` bug, missing tests added for Button, Label.
 
 **Learned:**
 
-- Building the second feature (check-types) went much faster than vehicles — the patterns from hexagonal architecture were already established
-- Zod v4 deprecated some APIs (`.refine()` signature change) — catching these early prevents runtime surprises
-- Adding tests for shared UI components (Button, Label, Input, Select) retroactively pays off immediately when those components get modified
+- Building the second feature (check-types) went much faster than vehicles — the patterns from hexagonal architecture were already established.
+- Zod v4 deprecated some APIs (`.refine()` signature change) — catching these early prevents runtime surprises.
+- Adding tests for shared UI components (Button, Label, Input, Select) retroactively pays off immediately when those components get modified.
+- Batching refactor issues (6 opened then closed in one day) trains the `/ship` workflow without scattering the effort across weeks.
 
 **Blockers:**
 
@@ -208,16 +253,17 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 ### Week of Feb 9-15, 2026
 
-> 38 commits | 5 PRs merged | 6 issues
+> 38 commits | 4 PRs merged
 
 **Worked on:**
 
-- Vehicle page finale: VehicleContainer with all modes (create, edit, view, delete), page wiring, navigation link
-- Big CI fix round: test isolation (mock.module vs spyOn), turbo cache disabled, Bun bump 1.3.3 -> 1.3.5
-- Frontend components finalized: VehicleForm, VehicleProfile, ConfirmDialog, DeleteVehicleDialog, VehicleEmptyState, QuickMileageUpdate, formatMileage/formatDate utilities
-- **Massive refactoring on Feb 15**: shared handleApiResponse extraction, dynamic year validation (no more hardcoded 2030), console.log replaced with Logger service, double timeout memory leak fix in apiRequest, duplicate /api prefix fix, changePasswordSchema moved out of auth feature
-- 6 issues opened (refactoring + bugs) then closed in one go
-- PR #12 "Release: Vehicle Profile feature + auth fixes" merged
+- **PR #4 (Feb 14) — Vehicle profile frontend complete:** VehicleContainer with all modes (create, edit, view, delete), page wiring, navigation link; VehicleForm, VehicleProfile, ConfirmDialog, DeleteVehicleDialog, VehicleEmptyState, QuickMileageUpdate, formatMileage/formatDate utilities.
+- Big CI fix round: test isolation (`mock.module` vs `spyOn`), turbo cache disabled, Bun bumped 1.3.3 → 1.3.5.
+- **Massive refactoring on Feb 15 — 3 PRs landed the same day:**
+  - **PR #14:** Replace hardcoded year 2030 with dynamic validation.
+  - **PR #15:** Consolidate duplicated `handleApiResponse` helper.
+  - **PR #16:** Remove cross-feature import in ChangePasswordForm.
+- Console.log replaced with Logger service, double-timeout memory leak fixed in `apiRequest`, duplicate `/api` prefix fix, `changePasswordSchema` moved out of auth feature — all opened as issues mid-refactor, closed the following Monday.
 
 **Learned:**
 
