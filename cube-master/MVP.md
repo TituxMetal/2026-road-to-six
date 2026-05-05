@@ -46,16 +46,16 @@ User inputs their cube state → receives a step-by-step solution.
 
 ### Features
 
-| Feature             | MVP | Details                                              |
-| ------------------- | --- | ---------------------------------------------------- |
-| Cube input          | ✓   | 2D net view, tap square to cycle colors              |
+| Feature             | MVP | Details                                               |
+| ------------------- | --- | ----------------------------------------------------- |
+| Cube input          | ✓   | 2D net view, tap square to cycle colors               |
 | Input validation    | ✓   | Detect invalid states (wrong color count, impossible) |
-| Solution generation | ✓   | Layer-by-layer method (~50-100 moves)                |
-| Solution display    | ✓   | List of moves in standard notation (R, U', F2, etc.) |
-| Step navigation     | ✓   | Prev/Next buttons to walk through solution           |
-| Cube visualization  | ✓   | 2D net updates to show current step                  |
-| Move animation      | ○   | Optional: animate face rotation                      |
-| Optimal solver      | ✗   | Kociemba algorithm (v2, significant complexity)      |
+| Solution generation | ✓   | Layer-by-layer method (~50-100 moves)                 |
+| Solution display    | ✓   | List of moves in standard notation (R, U', F2, etc.)  |
+| Step navigation     | ✓   | Prev/Next buttons to walk through solution            |
+| Cube visualization  | ✓   | 2D net updates to show current step                   |
+| Move animation      | ○   | Optional: animate face rotation                       |
+| Optimal solver      | ✗   | Kociemba algorithm (v2, significant complexity)       |
 
 ### Technical Requirements
 
@@ -78,15 +78,15 @@ Progressive tutorials to learn solving methods, using the Solver engine for demo
 
 ### Features
 
-| Feature           | MVP | Details                                               |
-| ----------------- | --- | ----------------------------------------------------- |
-| Lesson browser    | ✓   | Categories: Beginner / Intermediate / Advanced        |
-| Lesson content    | ✓   | Text explanation + algorithms + cube visualization    |
-| Algorithm display | ✓   | Standard notation with optional finger tricks         |
-| Live demo         | ✓   | Show algorithm effect on cube (uses Solver engine)    |
-| Practice mode     | ✓   | Scramble to specific case, user applies algorithm     |
-| Progress tracking | ○   | Mark lessons as learned (localStorage)                |
-| Quiz mode         | ✗   | Test recognition of cases (v2)                        |
+| Feature           | MVP | Details                                            |
+| ----------------- | --- | -------------------------------------------------- |
+| Lesson browser    | ✓   | Categories: Beginner / Intermediate / Advanced     |
+| Lesson content    | ✓   | Text explanation + algorithms + cube visualization |
+| Algorithm display | ✓   | Standard notation with optional finger tricks      |
+| Live demo         | ✓   | Show algorithm effect on cube (uses Solver engine) |
+| Practice mode     | ✓   | Scramble to specific case, user applies algorithm  |
+| Progress tracking | ○   | Mark lessons as learned (localStorage)             |
+| Quiz mode         | ✗   | Test recognition of cases (v2)                     |
 
 ### Content Structure
 
@@ -125,18 +125,18 @@ Speedcube timer with scrambles and session tracking.
 
 ### Features
 
-| Feature            | MVP | Details                                          |
-| ------------------ | --- | ------------------------------------------------ |
-| Scramble generator | ✓   | Random 20-25 move scramble, standard notation    |
-| Scramble display   | ✓   | Text notation                                    |
-| Scramble preview   | ○   | 2D net showing scrambled state                   |
-| Timer              | ✓   | Start/stop with spacebar or tap                  |
-| Inspection time    | ○   | Optional 15-second countdown before solve        |
-| Session history    | ✓   | List of times with scrambles                     |
-| Statistics         | ✓   | Best, Worst, Average of 5, Average of 12         |
-| Progression graph  | ○   | Chart showing improvement over time              |
-| Session management | ○   | Multiple sessions, session names                 |
-| Data persistence   | ✓   | localStorage for times                           |
+| Feature            | MVP | Details                                       |
+| ------------------ | --- | --------------------------------------------- |
+| Scramble generator | ✓   | Random 20-25 move scramble, standard notation |
+| Scramble display   | ✓   | Text notation                                 |
+| Scramble preview   | ○   | 2D net showing scrambled state                |
+| Timer              | ✓   | Start/stop with spacebar or tap               |
+| Inspection time    | ○   | Optional 15-second countdown before solve     |
+| Session history    | ✓   | List of times with scrambles                  |
+| Statistics         | ✓   | Best, Worst, Average of 5, Average of 12      |
+| Progression graph  | ○   | Chart showing improvement over time           |
+| Session management | ○   | Multiple sessions, session names              |
+| Data persistence   | ✓   | localStorage for times                        |
 
 ### Technical Requirements
 
