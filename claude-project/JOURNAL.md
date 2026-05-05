@@ -17,14 +17,14 @@ structure the "Learn By Doing" workflow.
 | Commits       | 62                    |
 | PRs merged    | 21                    |
 | Issues closed | 2                     |
-| Weeks active  | 8                     |
+| Weeks active  | 9                     |
 | Period        | Jan 25 — Apr 29, 2026 |
 
 ---
 
 ## Entries
 
-### Week of Apr 27 - May 3, 2026 (partial)
+### Week of Apr 27 - May 3, 2026
 
 > 4 commits (no PRs — direct-to-main on Apr 29)
 
