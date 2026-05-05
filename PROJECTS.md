@@ -1,150 +1,83 @@
-# 2026 Road to Six
+# Projects — Status Dashboard
 
-**No more excuses. Ship six projects. Learn by doing.**
+Live snapshot of all Road to Six tracked projects. For the why and the philosophy, see
+[README.md](./README.md).
 
-## What is this?
-
-This repository is my accountability system for 2026. A personal commitment to stop endlessly
-restarting projects and actually ship things that work.
-
-The goal: **6 presentable, deployable, testable projects by December 2026.**
-
-Not perfect. Not revolutionary. Just done.
-
-## Why?
-
-I'm a fullstack web developer who loves coding but struggles with the finish line. I've spent years
-cycling through the same pattern:
-
-1. Get excited about a new project or technology
-2. Build something cool for a few weeks
-3. Hit a wall, lose motivation, abandon
-4. Repeat with something "better"
-
-This year, I'm breaking the cycle. Not by forcing myself to never experiment — that's not realistic
-— but by having a clear structure that keeps me accountable while leaving room for exploration.
-
-## The Plan
-
-### Semester 1 (January → June)
-
-**Tier 1 Projects** — Must ship:
-
-| Project            | Description                                 | Target      |
-| ------------------ | ------------------------------------------- | ----------- |
-| Trading Journal    | Personal trading log with P&L and dividends | ~2-3 months |
-| Car Cost Tracker   | Vehicle maintenance & expense tracker       | ~2-3 months |
-| ForkliftFleetCheck | Fleet inspection app with multi-role access | ~2-3 months |
-
-### Semester 2 (July → December)
-
-**Tier 1 Projects** — Must ship:
-
-| Project          | Description                              | Target      |
-| ---------------- | ---------------------------------------- | ----------- |
-| Portfolio + Blog | Showcase projects, document learnings    | ~2-3 months |
-| GuardStore       | E-commerce for learning RBAC/permissions | ~2-3 months |
-| CubeMaster       | Rubik's Cube solver, coach & timer app   | ~2-3 months |
-
-### The "Bone Pile"
-
-These are experiments, explorations, and half-baked ideas. When I need to scratch the itch of
-"starting fresh" or "trying something new," I work on these instead of abandoning my Tier 1
-projects.
-
-The rule: **I can chew on a bone, but I always come back to the steak.**
-
-Some bones may graduate to Tier 1 in Semester 2. Most won't. That's fine.
-
-## Philosophy
-
-### On finishing
-
-"Presentable" doesn't mean perfect. It means:
-
-- Someone else can use it
-- It's deployed somewhere accessible
-- The core features work
-- There's enough documentation to understand what it does
-
-### On learning
-
-I learn by rebuilding. Hexagonal architecture, feature-based folders, Bun, new patterns — I need to
-try things multiple ways to really understand them. This repository acknowledges that tendency and
-channels it productively.
-
-### On AI assistance
-
-I use AI (Claude) as a **pair-programmer and coach**, not a code generator. The AI guides, explains,
-challenges. I write the code. This keeps my skills sharp and my understanding deep.
-
-## Structure
-
-```text
-2026-road-to-six/
-├── README.md                   # You are here
-├── PROJECTS.md                 # Overview of all projects
-├── trading-journal/
-│   ├── MVP.md                  # What "done" looks like
-│   └── JOURNAL.md              # Progress log, learnings, time spent
-├── car-cost-tracker/
-│   ├── MVP.md
-│   └── JOURNAL.md
-├── forklift-fleet-check/
-│   ├── MVP.md
-│   └── JOURNAL.md
-├── guard-store/
-│   ├── MVP.md
-│   └── JOURNAL.md
-├── portfolio-blog/
-│   ├── MVP.md
-│   └── JOURNAL.md
-├── cube-master/
-│   ├── MVP.md
-│   └── JOURNAL.md
-└── claude-project/
-    ├── DESCRIPTION.md          # For Claude Web project setup
-    └── INSTRUCTIONS.md         # How I want Claude to interact with me
-```
-
-## Tracking Progress
-
-Each project has a JOURNAL.md where I log:
-
-- Date and time spent
-- What I worked on
-- What I learned or discovered
-- Blockers and how I solved them
-
-This isn't about micromanaging myself. It's about having a record I can look back on — proof that
-I'm moving forward even when it doesn't feel like it.
-
-## Links
-
-### Semester 1 Projects
-
-- [Trading Journal MVP](./trading-journal/MVP.md)
-- [Car Cost Tracker MVP](./car-cost-tracker/MVP.md)
-- [ForkliftFleetCheck MVP](./forklift-fleet-check/MVP.md)
-
-### Semester 2 Projects
-
-- [Portfolio + Blog MVP](./portfolio-blog/MVP.md)
-- [GuardStore MVP](./guard-store/MVP.md)
-- [CubeMaster MVP](./cube-master/MVP.md)
-
-### Prototypes (Spark)
-
-- [Trading Journal prototype](https://github.com/TituxMetal/astro-trading-journal)
-- [Car Cost Tracker prototype](https://github.com/TituxMetal/car-repair-cost-trac)
-- [FleetChariot prototype](https://github.com/TituxMetal/fleetchariot)
-- [CubeMaster prototype](https://github.com/TituxMetal/rubiks-cube-solver-codespace)
-
-### Base Template
-
-- [sample-project](https://github.com/TituxMetal/sample-project) — Starting point for all new
-  projects
+_Last updated: 2026-05-05_
 
 ---
 
-_Started January 2026. Let's see where this goes._
+## Status taxonomy
+
+- **📝 Spec drafted** — `MVP.md` written with substantial content
+- **📋 Spec stub** — `MVP.md` exists but is mostly TODOs, not yet matured
+- **🌱 Initialized** — repo created, scaffold pushed, no product code yet
+- **🚧 In progress** — active development
+- **⏸ Paused** — repo with real product code, currently inactive
+- **✅ Shipped** — meets the "presentable" criteria from [README.md](./README.md)
+- **🪦 Abandoned** — explicitly dropped (none currently)
+
+---
+
+## Tier 1 — Semester 1 (January → June)
+
+| Project            | Status                  | Live                                             | Last activity                                                  |
+| ------------------ | ----------------------- | ------------------------------------------------ | -------------------------------------------------------------- |
+| Trading Journal    | 📝 Spec drafted         | —                                                | —                                                              |
+| Car Cost Tracker   | ✅ Shipped Apr 30, 2026 | [cost-log.tuxlab.fr](https://cost-log.tuxlab.fr) | [Week of Apr 27 - May 3, 2026](./car-cost-tracker/JOURNAL.md)  |
+| ForkliftFleetCheck | 🌱 Initialized Jan 7    | —                                                | [Week of Jan 5-11, 2026](./forklift-fleet-check/JOURNAL.md)    |
+| PIF Is Fake        | ✅ Shipped May 4, 2026  | [pif.tuxlab.fr](https://pif.tuxlab.fr)           | [Week of May 4-10, 2026 _(partial)_](./pif-is-fake/JOURNAL.md) |
+
+> ForkliftFleetCheck repo was scaffolded from `sample-project` on Jan 7 with one initial commit and
+> never touched again. The earlier Spark prototype (FleetChariot, listed in
+> [README → Prototypes](./README.md#prototypes-spark)) is separate and predates Road to Six.
+
+## Tier 1 — Semester 2 (July → December)
+
+| Project          | Status           | Live | Last activity                                      |
+| ---------------- | ---------------- | ---- | -------------------------------------------------- |
+| Portfolio + Blog | 📋 Spec stub     | —    | —                                                  |
+| GuardStore       | 📝 Spec drafted  | —    | —                                                  |
+| CubeMaster       | ⏸ Paused Apr 12  | —    | [Week of Apr 6-12, 2026](./cube-master/JOURNAL.md) |
+
+> CubeMaster started early as a graduated Bone Pile project (Jan 26). 64 commits and 8 PRs merged
+> on the active [cube-master](https://github.com/TituxMetal/cube-master) repo (develop), no activity
+> since Apr 12. Earlier work on the abandoned `rubiks-cube-solver-codespace` and Spark cubemaster
+> repos is documented in [cube-master/JOURNAL.md](./cube-master/JOURNAL.md).
+
+## Méta projets
+
+These aren't Tier 1 themselves, but they support the system.
+
+| Project              | Role                                                                                                               | Last activity                                               |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- |
+| claude-code-tool-kit | Methodology backbone (skills, hooks, agents) — tracked in [claude-project/JOURNAL.md](./claude-project/JOURNAL.md) | [Week of Apr 27 - May 3, 2026](./claude-project/JOURNAL.md) |
+| 2026-road-to-six     | This repo — accountability system, journals, MVPs                                                                  | (continuous)                                                |
+
+## Bone Pile
+
+The Bone Pile is described in [README.md → The "Bone Pile"](./README.md#the-bone-pile). PIF Is Fake
+bypassed the pile and shipped directly to Tier 1 — no other bones formally tracked at this time.
+
+---
+
+## Roll-up Stats
+
+Aggregated across all `JOURNAL.md` files at the date above.
+
+| Metric                           | Value                                                                            |
+| -------------------------------- | -------------------------------------------------------------------------------- |
+| Tier 1 projects shipped          | 2 / 6 (Car Cost Tracker, PIF Is Fake)                                            |
+| Tier 1 paused                    | 1 (CubeMaster)                                                                   |
+| Tier 1 initialized               | 1 (ForkliftFleetCheck — scaffold only)                                           |
+| Tier 1 spec drafted              | 2 (Trading Journal, GuardStore)                                                  |
+| Tier 1 spec stub                 | 1 (Portfolio + Blog)                                                             |
+| Total commits (Tier 1)           | 341 (car-cost-tracker) + 49 + 64 + 1 = **455**                                   |
+| Total commits (méta)             | 62 (claude-code-tool-kit)                                                        |
+| Total PRs merged (Tier 1 + méta) | 47 (car-cost-tracker) + 4 + 8 + 0 + 21 = **80**                                  |
+| First journal entry              | Jan 5, 2026 (car-cost-tracker, forklift-fleet-check)                             |
+| First Tier 1 ship                | Apr 30, 2026 (Car Cost Tracker)                                                  |
+| Most recent Tier 1 ship          | May 4, 2026 (PIF Is Fake)                                                        |
+
+> Stats are recomputed manually from each project's `Cumulative Stats` table. Numbers drift between
+> updates — the source of truth is each `JOURNAL.md`.

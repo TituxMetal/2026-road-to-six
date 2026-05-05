@@ -30,11 +30,12 @@ This year, I'm breaking the cycle. Not by forcing myself to never experiment —
 
 **Tier 1 Projects** — Must ship:
 
-| Project            | Description                                 | Target      |
-| ------------------ | ------------------------------------------- | ----------- |
-| Trading Journal    | Personal trading log with P&L and dividends | ~2-3 months |
-| Car Cost Tracker   | Vehicle maintenance & expense tracker       | ~2-3 months |
-| ForkliftFleetCheck | Fleet inspection app with multi-role access | ~2-3 months |
+| Project            | Description                                     | Target       | Status                  |
+| ------------------ | ----------------------------------------------- | ------------ | ----------------------- |
+| Trading Journal    | Personal trading log with P&L and dividends     | ~2-3 months  | 📝 Spec drafted         |
+| Car Cost Tracker   | Vehicle maintenance & expense tracker           | ~2-3 months  | ✅ Shipped Apr 30, 2026 |
+| ForkliftFleetCheck | Fleet inspection app with multi-role access     | ~2-3 months  | 🌱 Initialized Jan 7    |
+| PIF Is Fake        | Satirical "prime au pif" generator (FR, parody) | 4-day sprint | ✅ Shipped May 4, 2026  |
 
 ### Semester 2 (July → December)
 
@@ -102,6 +103,9 @@ challenges. I write the code. This keeps my skills sharp and my understanding de
 ├── cube-master/
 │   ├── MVP.md
 │   └── JOURNAL.md
+├── pif-is-fake/
+│   ├── MVP.md
+│   └── JOURNAL.md
 └── claude-project/
     ├── DESCRIPTION.md          # For Claude Web project setup
     └── INSTRUCTIONS.md         # How I want Claude to interact with me
@@ -124,8 +128,10 @@ I'm moving forward even when it doesn't feel like it.
 ### Semester 1 Projects
 
 - [Trading Journal MVP](./trading-journal/MVP.md)
-- [Car Cost Tracker MVP](./car-cost-tracker/MVP.md)
+- [Car Cost Tracker MVP](./car-cost-tracker/MVP.md) — ✅ live at
+  [cost-log.tuxlab.fr](https://cost-log.tuxlab.fr)
 - [ForkliftFleetCheck MVP](./forklift-fleet-check/MVP.md)
+- [PIF Is Fake MVP](./pif-is-fake/MVP.md) — ✅ live at [pif.tuxlab.fr](https://pif.tuxlab.fr)
 
 ### Semester 2 Projects
 
