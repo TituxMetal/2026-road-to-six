@@ -21,16 +21,16 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 | Commits       | 339                  |
 | PRs merged    | 47                   |
 | Issues closed | 7                    |
-| Weeks active  | 14                   |
+| Weeks active  | 15                   |
 | Period        | Jan 5 — Apr 30, 2026 |
 
 ---
 
 ## Entries
 
-### Week of Apr 27 - May 3, 2026 (partial)
+### Week of Apr 27 - May 3, 2026
 
-> 24 commits | 3 PRs merged | 1 issue closed (so far)
+> 24 commits | 3 PRs merged | 1 issue closed
 
 **Worked on:**
 
