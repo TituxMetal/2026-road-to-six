@@ -30,12 +30,16 @@ This year, I'm breaking the cycle. Not by forcing myself to never experiment —
 
 **Tier 1 Projects** — Must ship:
 
-| Project            | Description                                     | Target       | Status                  |
-| ------------------ | ----------------------------------------------- | ------------ | ----------------------- |
-| Trading Journal    | Personal trading log with P&L and dividends     | ~2-3 months  | 📝 Spec drafted         |
-| Car Cost Tracker   | Vehicle maintenance & expense tracker           | ~2-3 months  | ✅ Shipped Apr 30, 2026 |
-| ForkliftFleetCheck | Fleet inspection app with multi-role access     | ~2-3 months  | 🌱 Initialized Jan 7    |
-| PIF Is Fake        | Satirical "prime au pif" generator (FR, parody) | 4-day sprint | ✅ Shipped May 4, 2026  |
+| Project            | Description                                     | Target       | Status                   |
+| ------------------ | ----------------------------------------------- | ------------ | ------------------------ |
+| Trading Journal    | Personal trading log with P&L and dividends     | ~2-3 months  | 🌰 Seed                  |
+| Car Cost Tracker   | Vehicle maintenance & expense tracker           | ~2-3 months  | 🚀 Released Apr 30, 2026 |
+| ForkliftFleetCheck | Fleet inspection app with multi-role access     | ~2-3 months  | 🌰 Seed                  |
+| PIF Is Fake        | Satirical "prime au pif" generator (FR, parody) | 4-day sprint | ✅ Shipped May 4, 2026   |
+| grimoire-arch      | Arch Linux guide & wiki (FR), first published   | unplanned    | 🚀 Released Jun 3, 2026  |
+
+> PIF Is Fake and grimoire-arch weren't on the launch list — they're unplanned 2026 builds that
+> shipped. Road to Six tracks what I actually build in the year, not just the plan I started with.
 
 ### Semester 2 (July → December)
 
@@ -86,25 +90,28 @@ challenges. I write the code. This keeps my skills sharp and my understanding de
 ├── README.md                   # You are here
 ├── PROJECTS.md                 # Overview of all projects
 ├── trading-journal/
-│   ├── MVP.md                  # What "done" looks like
+│   ├── MVP.md                  # Seed — legacy spec, kept until a real start
 │   └── JOURNAL.md              # Progress log, learnings, time spent
 ├── car-cost-tracker/
-│   ├── MVP.md
+│   ├── README.md               # Released — frozen goals + dated scorecard
 │   └── JOURNAL.md
 ├── forklift-fleet-check/
-│   ├── MVP.md
+│   ├── MVP.md                  # Seed — legacy spec, kept until a real start
 │   └── JOURNAL.md
 ├── guard-store/
-│   ├── MVP.md
+│   ├── MVP.md                  # Seed
 │   └── JOURNAL.md
 ├── portfolio-blog/
-│   ├── MVP.md
+│   ├── MVP.md                  # Seed
 │   └── JOURNAL.md
 ├── cube-master/
-│   ├── MVP.md
+│   ├── README.md               # Released — frozen goals + dated scorecard
 │   └── JOURNAL.md
 ├── pif-is-fake/
-│   ├── MVP.md
+│   ├── README.md               # Shipped — frozen goals + dated scorecard
+│   └── JOURNAL.md
+├── grimoire-arch/
+│   ├── README.md               # Released — scorecard derived from repo docs
 │   └── JOURNAL.md
 └── claude-project/
     ├── DESCRIPTION.md          # For Claude Web project setup
@@ -127,17 +134,21 @@ I'm moving forward even when it doesn't feel like it.
 
 ### Semester 1 Projects
 
-- [Trading Journal MVP](./trading-journal/MVP.md)
-- [Car Cost Tracker MVP](./car-cost-tracker/MVP.md) — ✅ live at
+- [Trading Journal MVP](./trading-journal/MVP.md) — 🌰 Seed
+- [Car Cost Tracker README](./car-cost-tracker/README.md) — 🚀 live at
   [cost-log.tuxlab.fr](https://cost-log.tuxlab.fr)
-- [ForkliftFleetCheck MVP](./forklift-fleet-check/MVP.md)
-- [PIF Is Fake MVP](./pif-is-fake/MVP.md) — ✅ live at [pif.tuxlab.fr](https://pif.tuxlab.fr)
+- [ForkliftFleetCheck MVP](./forklift-fleet-check/MVP.md) — 🌰 Seed
+- [PIF Is Fake README](./pif-is-fake/README.md) — ✅ live at [pif.tuxlab.fr](https://pif.tuxlab.fr)
+- [grimoire-arch README](./grimoire-arch/README.md) — 🚀 live at
+  [tituxmetal.github.io/grimoire-arch](https://tituxmetal.github.io/grimoire-arch/) ·
+  [repo](https://github.com/TituxMetal/grimoire-arch)
 
 ### Semester 2 Projects
 
-- [Portfolio + Blog MVP](./portfolio-blog/MVP.md)
-- [GuardStore MVP](./guard-store/MVP.md)
-- [CubeMaster MVP](./cube-master/MVP.md)
+- [Portfolio + Blog MVP](./portfolio-blog/MVP.md) — 🌰 Seed
+- [GuardStore MVP](./guard-store/MVP.md) — 🌰 Seed
+- [CubeMaster README](./cube-master/README.md) — 🚀 live at
+  [cube-master.fly.dev](https://cube-master.fly.dev/)
 
 ### Prototypes (Spark)
 
