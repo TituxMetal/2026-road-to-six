@@ -10,8 +10,10 @@ Repo: [TituxMetal/cube-master](https://github.com/TituxMetal/cube-master) · Liv
       tap-to-paint input, validation, and prev/next step navigation
 - [x] **Timer** — scramble generator, spacebar/tap timer, session history, Best / Ao5 / Ao12 stats,
       localStorage persistence
-- [ ] **Coach** — progressive tutorials (beginner → advanced) — **not built** (a "Coming soon" stub)
-- [ ] **Coach** — live algorithm demos + practice mode — **not built**
+- [~] **Coach** — progressive tutorials (beginner → advanced) — **v1 live**: eight-chapter beginner
+      layer-by-layer journey (Ch0 notation → Ch7 finish); advanced tutorials still ahead
+- [x] **Coach** — live algorithm demos + practice mode — **built** (placement-aware demos +
+      full-chapter practice, on a dedicated teaching solver)
 - [x] Clean TypeScript domain-driven engine (`packages/cube-engine`) — the shared backbone Solver
       and Timer both reuse
 - [x] Cohesive UI shell — landing + the three mode surfaces + design system (Vite + React SPA)
@@ -22,10 +24,11 @@ Repo: [TituxMetal/cube-master](https://github.com/TituxMetal/cube-master) · Liv
 - Complexity: 6/10 — no backend or database (localStorage only), a single Vite + React SPA, but the
   layer-by-layer solver algorithm and cube domain model are genuinely hard (the earlier Spark
   prototype failed at exactly this).
-- Completion: ~70% — 5 of 7 (Solver, Timer, the shared engine, the UI shell, and the live deploy are
-  done); Coach is the whole remaining mode — a full third of the original promise — and is still a
-  "Coming soon" stub.
-- Status: 🚀 Released — live, with Coach the remaining mode (resume planned via the new workflow).
+- Completion: ~90% — all three modes are now live. Coach v1 (PR #11, Jun 22) landed the teaching
+  solver, the eight-chapter beginner journey, placement-aware demos and full-chapter practice. What
+  keeps it under 100% is the original "beginner → advanced" promise: the beginner layer-by-layer
+  method is taught end to end, advanced tutorials remain.
+- Status: 🚀 Released — live, all three modes shipped; advanced Coach tutorials are the remaining gap.
 - Personal note: born from the legendary Spark "SOLVED" (it wasn't) disaster. The clean React/Vite
   restart, domain-first, is what finally made a real solver work.
 
@@ -34,4 +37,4 @@ Repo: [TituxMetal/cube-master](https://github.com/TituxMetal/cube-master) · Liv
 - Interactive CubePlayground on the landing page — free move manipulation with history, beyond the
   three core modes
 
-_Last updated: 2026-06-10_
+_Last updated: 2026-06-27_
