@@ -18,15 +18,108 @@ Don't overthink it. Short entries are fine. The goal is to have a record you can
 
 | Metric        | Total                                                    |
 | ------------- | -------------------------------------------------------- |
-| Commits       | ~116 (101 pushed + ~15 local Spark cubemaster)           |
-| PRs merged    | 13                                                       |
-| Issues closed | 0                                                        |
-| Weeks active  | 5                                                        |
-| Period        | Jan 26 — Apr 7, 2026                                     |
+| Commits       | ~159 (144 pushed on develop, GitHub API + ~15 local Spark cubemaster) |
+| PRs merged    | 17                                                       |
+| Issues closed | 11                                                       |
+| Weeks active  | 7                                                        |
+| Period        | Jan 26 — Jun 27, 2026                                    |
 
 ---
 
 ## Entries
+
+### Week of Jun 22-28, 2026
+
+> **cube-master** 24 commits | 1 PR merged — **Coach mode v1 merged & hardened**
+
+**Worked on:**
+
+- **PR #11 merged (Jun 22)** — Coach mode v1 went into `develop` (the build itself landed across the
+  two prior weeks; see below). Live alongside Solver and Timer.
+- **CI:** a Claude PR Assistant workflow (auto branch/PR/issue creation, `gh pr` permissions).
+- **Post-review reliability pass:** wrapped the Coach route in a recovery `ErrorBoundary` and made
+  "Réessayer" actually recover the route (not a no-op); fail loudly on out-of-range demo
+  `groupIndex`; stopped a stale step index from auto-completing the next chapter; degrade milestone
+  computation to solved cubes on failure.
+- **Router/storage hardening:** decode percent-encoded route params in `matchRoute` (guarded against
+  malformed encoding), gate the storage version-mismatch warning behind `import.meta.env.DEV`.
+- **Perf + tests:** prewarm the milestone cache during idle so the first lesson opens unblocked;
+  cover the LessonPlayer last-step navigation fork and the milestone degrade-on-throw fallback.
+- **Refactor/docs:** extract shared `applySeq` into teaching helpers; capture Coach reactive-store
+  render/effect hazards and the LessonPlayer sibling-effect ordering contract as solution docs.
+
+**Learned:**
+
+- A reactive lesson store needs explicit guards at its seams — out-of-range demo indices, stale step
+  indices, and milestone-compute failures each had to degrade or fail loudly rather than silently
+  corrupt lesson progress.
+
+**Blockers:**
+
+- None — Coach v1 is live; what's left of the original "beginner → advanced" promise is the advanced
+  tutorials (the beginner layer-by-layer method is taught end to end).
+
+---
+
+### Week of Jun 15-21, 2026
+
+> **cube-master** 38 commits — **the heart of the Coach v1 build** (PR #11 opened Jun 21)
+
+**Worked on:**
+
+- **The teaching solver** (`packages/cube-engine` teaching layer) — a pure-TS sibling to the Solver
+  that shares none of its phases: `planWhiteCorners`, a second-layer planner (two inserts, four
+  slots), and last-layer planners with a corner-safe edge 3-cycle. Fails loudly on incomplete plans
+  and verifies each milestone.
+- **Chapters 2–7 reworked onto the teaching solver** — explicit per-case demos, chained milestones,
+  French gesture badges, single-insert Ch3 demos, orientation-safe corner placement on a yellow-down
+  frame. Promoted `white-cross-flip` and `ua-perm` into the algorithm catalog.
+- **Milestone-demo model + interactive practice** (per-chapter practice from the previous milestone).
+- **CubeNet visuals finished** — fluid `rem` sizing (viewport units collapsed at 13"), ruwix-style
+  band move-arrows, dim-veil highlights, stacked mobile layout to kill horizontal scroll.
+- **Docs:** placement-pedagogy brainstorm/plan + TS-0 feasibility, the teaching-solver ADR, and
+  solution docs for cross-browser CubeNet sizing, the move-arrow band model, and yellow-down framing.
+
+**Learned:**
+
+- The teaching solver had to be a **separate** pure-TS module from the Solver phases — keeping lesson
+  moves on their own deterministic planners is what stops them drifting as the Solver evolves.
+- Teaching the layer-by-layer method reads better on a **fixed, no-rotation frame** (flat CubeNet,
+  white-up/green-front) than on a free-rotating 3D cube.
+
+**Blockers:**
+
+- None
+
+---
+
+### Week of Jun 8-14, 2026
+
+> **cube-master** 18 commits | 1 PR merged — harness doctrine + Coach groundwork & proof slice
+
+**Worked on:**
+
+- **PR #10 — Heart of Gold harness doctrine:** adopted the AGENTS.md + docs taxonomy (the same
+  workflow baseline used to ship grimoire-arch), giving Coach v1 a place to land its ADRs, stories,
+  and solution docs as the work happened.
+- **Coach planning:** brainstorm, v1 stories + architecture, the build plan, and ADR 0006
+  (algorithm catalog in the domain layer).
+- **Shared groundwork:** an in-domain algorithm catalog (consumed by the Solver), a versioned
+  localStorage helper, and single-segment param matching for the hand-rolled router.
+- **Coach proof slice:** the Second Layer slice (lesson model, store, player), then the White Cross
+  and White Corners chapters — replacing the old "Coming soon" stub with a functional lesson browser.
+
+**Learned:**
+
+- Laying the harness doctrine and a proof slice down first meant the rest of Coach built on a
+  verified vertical rather than a guess — the Second Layer slice proved the lesson/store/player shape
+  before the other chapters were authored.
+
+**Blockers:**
+
+- None
+
+---
 
 ### Week of Apr 6-12, 2026
 
