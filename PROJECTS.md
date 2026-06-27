@@ -3,7 +3,7 @@
 Live snapshot of all Road to Six tracked projects. For the why and the philosophy, see
 [README.md](./README.md).
 
-_Last updated: 2026-06-10_
+_Last updated: 2026-06-27_
 
 ---
 
@@ -53,14 +53,18 @@ The status is the **furthest milestone reached**, not the current activity — a
 | ---------------- | ---------------------- | --------------------------------------------------- | -------------------------------------------------- |
 | Portfolio + Blog | 🌰 Seed                | —                                                   | —                                                  |
 | GuardStore       | 🌰 Seed                | —                                                   | —                                                  |
-| CubeMaster       | 🚀 Released            | [cube-master.fly.dev](https://cube-master.fly.dev/) | [Week of Apr 6-12, 2026](./cube-master/JOURNAL.md) |
+| CubeMaster       | 🚀 Released            | [cube-master.fly.dev](https://cube-master.fly.dev/) | [Week of Jun 22-28, 2026 — Coach v1](./cube-master/JOURNAL.md) |
 
-> CubeMaster started early as a graduated Bone Pile project (Jan 26). 64 commits and 8 PRs merged
+> CubeMaster started early as a graduated Bone Pile project (Jan 26). ~144 commits and 17 PRs merged
 > on the active [cube-master](https://github.com/TituxMetal/cube-master) repo (develop), deployed to
 > [cube-master.fly.dev](https://cube-master.fly.dev/) on Apr 7 (Solver + Timer + playground, live).
-> Now **Released** (~70%): Coach is the remaining mode, a resume planned via the new workflow.
-> Earlier work on the abandoned `rubiks-cube-solver-codespace` and Spark cubemaster repos is
-> documented in [cube-master/JOURNAL.md](./cube-master/JOURNAL.md).
+> Now **Released** (~90%): the third mode landed — **Coach v1** (PR #11, Jun 22) added the teaching
+> solver, an eight-chapter beginner journey (Ch0 notation → Ch7 finish), placement-aware demos and a
+> full-chapter practice mode, polished by post-review fixes through Jun 27. All three modes are now
+> live; what keeps it under 100% is the original "beginner → advanced" promise — Coach covers the
+> beginner layer-by-layer method, advanced tutorials remain. Earlier work on the abandoned
+> `rubiks-cube-solver-codespace` and Spark cubemaster repos is documented in
+> [cube-master/JOURNAL.md](./cube-master/JOURNAL.md).
 
 ## Méta projets
 
@@ -86,10 +90,10 @@ Per-project completion against each project's definition of done (see its `READM
 | ---------------- | ---------- | ---------- | ----------- |
 | PIF Is Fake      | 100%       | 4/10       | ✅ Shipped  |
 | Car Cost Tracker | ~80%       | 7/10       | 🚀 Released |
-| CubeMaster       | ~70%       | 6/10       | 🚀 Released |
+| CubeMaster       | ~90%       | 6/10       | 🚀 Released |
 | grimoire-arch    | ~60%       | 6/10       | 🚀 Released |
 
-> Complexity-weighted average completion: **~76%** — each project's `%` is weighted by its
+> Complexity-weighted average completion: **~81%** — each project's `%` is weighted by its
 > complexity, so ~80% of a 7/10 counts more than 100% of a 4/10. The weight keeps the dashboard
 > honest: the hard, nearly-done builds carry more than the easy, finished ones.
 
@@ -98,8 +102,10 @@ Per-project completion against each project's definition of done (see its `READM
 A trend, not a journal — the weekly detail lives in each `JOURNAL.md`. Numbers from
 `scripts/weekly-stats.sh`.
 
-> **Jun 2026 (to date): 24 commits · 0 PRs** (−30 commits · −4 PRs vs May) — **May 2026: 54
-> commits · 4 PRs · 4 issues**. June so far is grimoire-only (shipped Jun 3).
+> **Jun 2026 (to date): 108 commits · 10 PRs · 11 issues** (+54 commits · +6 PRs vs May) — **May
+> 2026: 54 commits · 4 PRs · 4 issues**. June's surge is **CubeMaster Coach mode v1** (80 commits, 9
+> PRs, 11 issues; shipped Jun 22) — the project's biggest month. grimoire wrapped its early-June work
+> (24 commits, all by Jun 10, shipped Jun 3); road-to-six itself added 4 commits.
 
 ---
 
@@ -113,9 +119,9 @@ Aggregated across all `JOURNAL.md` files at the date above.
 | Tier 1 released (live, < 100%)   | 3 (Car Cost Tracker, CubeMaster, grimoire-arch)                                  |
 | Tier 1 growing / germinating     | 0 / 0                                                                            |
 | Tier 1 seed                      | 4 (Trading Journal, ForkliftFleetCheck, GuardStore, Portfolio + Blog)           |
-| Total commits (Tier 1)           | 341 (car-cost-tracker) + 49 + 64 + 1 + 24 = **479**                              |
-| Total commits (méta)             | 62 (claude-code-tool-kit)                                                        |
-| Total PRs merged (Tier 1 + méta) | 47 (car-cost-tracker) + 4 + 8 + 0 + 0 + 21 = **80** (grimoire shipped direct-to-main) |
+| Total commits (Tier 1)           | car-cost 341 · PIF 49 · cube 144 · forklift 1 · grimoire 24 = **559**            |
+| Total commits (méta)             | claude-code-tool-kit 62                                                          |
+| Total PRs merged (Tier 1 + méta) | car-cost 47 · PIF 4 · cube 17 · forklift 0 · grimoire 0 · cc-tool-kit 21 = **89** (grimoire ships direct-to-main) |
 | First journal entry              | Jan 5, 2026 (car-cost-tracker, forklift-fleet-check)                             |
 | First Tier 1 live                | Apr 7, 2026 (CubeMaster)                                                         |
 | Most recent Tier 1 live          | Jun 3, 2026 (grimoire-arch)                                                      |
